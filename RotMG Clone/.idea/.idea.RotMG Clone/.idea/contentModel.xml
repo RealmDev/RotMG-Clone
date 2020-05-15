@@ -8,6 +8,188 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Resources" t="Include">
+          <e p="Assets" t="Include">
+            <e p="3DObjects" t="Include">
+              <e p="bigcube.obj" t="Include" />
+              <e p="brokenPillar.obj" t="Include" />
+              <e p="candyColBroken.obj" t="Include" />
+              <e p="candyColWhole.obj" t="Include" />
+              <e p="candyDoughnut1.obj" t="Include" />
+              <e p="candyDoughnut2.obj" t="Include" />
+              <e p="candyDoughnut3.obj" t="Include" />
+              <e p="candyDoughnut4.obj" t="Include" />
+              <e p="cloningVat.obj" t="Include" />
+              <e p="columnOneAndHalf.obj" t="Include" />
+              <e p="crate.obj" t="Include" />
+              <e p="cube.obj" t="Include" />
+              <e p="dodecahedron.obj" t="Include" />
+              <e p="gasEmitter.obj" t="Include" />
+              <e p="icosahedron.obj" t="Include" />
+              <e p="jacko.obj" t="Include" />
+              <e p="labTank.obj" t="Include" />
+              <e p="largeMonument1.obj" t="Include" />
+              <e p="largeMonument2.obj" t="Include" />
+              <e p="largeMonument3.obj" t="Include" />
+              <e p="monsterTank1.obj" t="Include" />
+              <e p="monsterTank2.obj" t="Include" />
+              <e p="monsterTank3.obj" t="Include" />
+              <e p="monsterTank4.obj" t="Include" />
+              <e p="newGate.obj" t="Include" />
+              <e p="newGateEnd1.obj" t="Include" />
+              <e p="newGateEnd2.obj" t="Include" />
+              <e p="newGateEntry.obj" t="Include" />
+              <e p="newGateEntry2.obj" t="Include" />
+              <e p="newMonument1.obj" t="Include" />
+              <e p="newMonument2.obj" t="Include" />
+              <e p="newMonument3.obj" t="Include" />
+              <e p="obelisk.obj" t="Include" />
+              <e p="octahedron.obj" t="Include" />
+              <e p="petUpgrader.obj" t="Include" />
+              <e p="pillar.obj" t="Include" />
+              <e p="pyramid.obj" t="Include" />
+              <e p="sign.obj" t="Include" />
+              <e p="squatty3Side.obj" t="Include" />
+              <e p="table.obj" t="Include" />
+              <e p="tableEdge.obj" t="Include" />
+              <e p="tesla.obj" t="Include" />
+              <e p="tetrahedron.obj" t="Include" />
+              <e p="threeSideCube.obj" t="Include" />
+              <e p="tower.obj" t="Include" />
+              <e p="twoHighWall.obj" t="Include" />
+              <e p="web.obj" t="Include" />
+            </e>
+            <e p="GameData" t="Include">
+              <e p="AbyssOfDemons.xml" t="Include" />
+              <e p="alienInvasionGround.xml" t="Include" />
+              <e p="alienInvasionObjects.xml" t="Include" />
+              <e p="Allies.xml" t="Include" />
+              <e p="Arena.xml" t="Include" />
+              <e p="autumnNexusGround.xml" t="Include" />
+              <e p="autumnNexusObjects.xml" t="Include" />
+              <e p="battleOryxGround.xml" t="Include" />
+              <e p="battleOryxObjects.xml" t="Include" />
+              <e p="Belladonna.xml" t="Include" />
+              <e p="BTesting.xml" t="Include" />
+              <e p="buffedBunnyObject.xml" t="Include" />
+              <e p="CandyLand.xml" t="Include" />
+              <e p="CaveOfAThousandTreasures.xml" t="Include" />
+              <e p="cnidarianReefGround.xml" t="Include" />
+              <e p="cnidarianReefObjects.xml" t="Include" />
+              <e p="Containers.xml" t="Include" />
+              <e p="crystalCaveGround.xml" t="Include" />
+              <e p="crystalCaveObjects.xml" t="Include" />
+              <e p="cursedLibraryGround.xml" t="Include" />
+              <e p="cursedLibraryObjects.xml" t="Include" />
+              <e p="dungeonsPatchXML.xml" t="Include" />
+              <e p="Dyes.xml" t="Include" />
+              <e p="Encounters.xml" t="Include" />
+              <e p="EpicForestMaze.xml" t="Include" />
+              <e p="epicHiveGround.xml" t="Include" />
+              <e p="epicHiveObjects.xml" t="Include" />
+              <e p="EpicPirateCave.xml" t="Include" />
+              <e p="EpicSpiderDen.xml" t="Include" />
+              <e p="Equip.xml" t="Include" />
+              <e p="EquipEggs.xml" t="Include" />
+              <e p="EquipKeys.xml" t="Include" />
+              <e p="EquipmentSets.xml" t="Include" />
+              <e p="EquipSkins.xml" t="Include" />
+              <e p="EquipTest.xml" t="Include" />
+              <e p="eventChestObjects.xml" t="Include" />
+              <e p="ForbiddenJungle.xml" t="Include" />
+              <e p="ForestMaze.xml" t="Include" />
+              <e p="fungalCavernGround.xml" t="Include" />
+              <e p="fungalCavernObjects.xml" t="Include" />
+              <e p="GhostShip.xml" t="Include" />
+              <e p="GraveStones.xml" t="Include" />
+              <e p="Ground.xml" t="Include" />
+              <e p="hanaminexusGround.xml" t="Include" />
+              <e p="hanaminexusObject.xml" t="Include" />
+              <e p="HauntedCemetery.xml" t="Include" />
+              <e p="Heroes.xml" t="Include" />
+              <e p="High.xml" t="Include" />
+              <e p="iceCaveGround.xml" t="Include" />
+              <e p="iceCaveObjects.xml" t="Include" />
+              <e p="IceTomb.xml" t="Include" />
+              <e p="innerWorkingsGround.xml" t="Include" />
+              <e p="innerWorkingsObjects.xml" t="Include" />
+              <e p="KTesting.xml" t="Include" />
+              <e p="LairOfDraconis.xml" t="Include" />
+              <e p="lairOfDraconisGround.xml" t="Include" />
+              <e p="lairOfDraconisObjects.xml" t="Include" />
+              <e p="LairOfShaitan.xml" t="Include" />
+              <e p="lairOfShaitanObjects.xml" t="Include" />
+              <e p="lostHallsGround.xml" t="Include" />
+              <e p="lostHallsObjects.xml" t="Include" />
+              <e p="Low.xml" t="Include" />
+              <e p="MadLab.xml" t="Include" />
+              <e p="magicWoodsGround.xml" t="Include" />
+              <e p="magicWoodsObjects.xml" t="Include" />
+              <e p="ManorOfTheImmortals.xml" t="Include" />
+              <e p="Mid.xml" t="Include" />
+              <e p="MiniDungeonHub.xml" t="Include" />
+              <e p="Mountains.xml" t="Include" />
+              <e p="mountainTempleGround.xml" t="Include" />
+              <e p="mountainTempleObject.xml" t="Include" />
+              <e p="MTesting.xml" t="Include" />
+              <e p="NexusDestroyed.xml" t="Include" />
+              <e p="NPCs.xml" t="Include" />
+              <e p="objectPatchMXL.xml" t="Include" />
+              <e p="Objects.xml" t="Include" />
+              <e p="OceanTrench.xml" t="Include" />
+              <e p="OryxCastle.xml" t="Include" />
+              <e p="OryxChamber.xml" t="Include" />
+              <e p="OryxChickenChamber.xml" t="Include" />
+              <e p="oryxHordeGround.xml" t="Include" />
+              <e p="oryxHordeObjects.xml" t="Include" />
+              <e p="OryxWineCellar.xml" t="Include" />
+              <e p="parasiteDenGround.xml" t="Include" />
+              <e p="parasiteDenObjects.xml" t="Include" />
+              <e p="particles.xml" t="Include" />
+              <e p="PermaFrostLord.xml" t="Include" />
+              <e p="Permapets.xml" t="Include" />
+              <e p="Pets.xml" t="Include" />
+              <e p="PirateCave.xml" t="Include" />
+              <e p="Players.xml" t="Include" />
+              <e p="PlayersZombies.xml" t="Include" />
+              <e p="Portals.xml" t="Include" />
+              <e p="Projectiles.xml" t="Include" />
+              <e p="PuppetMaster.xml" t="Include" />
+              <e p="PuppetMasterEncore.xml" t="Include" />
+              <e p="Regions.xml" t="Include" />
+              <e p="santaWorkshopGround.xml" t="Include" />
+              <e p="santaWorkshopObjects.xml" t="Include" />
+              <e p="secludedThicketGround.xml" t="Include" />
+              <e p="secludedThicketObjects.xml" t="Include" />
+              <e p="Shatters.xml" t="Include" />
+              <e p="Shore.xml" t="Include" />
+              <e p="Skins.xml" t="Include" />
+              <e p="SnakePit.xml" t="Include" />
+              <e p="SpiderDen.xml" t="Include" />
+              <e p="SpriteWorld.xml" t="Include" />
+              <e p="StaticObjects.xml" t="Include" />
+              <e p="STesting.xml" t="Include" />
+              <e p="stPatricksGround.xml" t="Include" />
+              <e p="stPatricksObject.xml" t="Include" />
+              <e p="summerNexusGround.xml" t="Include" />
+              <e p="summerNexusObject.xml" t="Include" />
+              <e p="TestingObjects.xml" t="Include" />
+              <e p="Textiles.xml" t="Include" />
+              <e p="TheHive.xml" t="Include" />
+              <e p="theMachineGround.xml" t="Include" />
+              <e p="theMachineObjects.xml" t="Include" />
+              <e p="Token.xml" t="Include" />
+              <e p="TombOfTheAncients.xml" t="Include" />
+              <e p="ToxicSewers.xml" t="Include" />
+              <e p="TTesting.xml" t="Include" />
+              <e p="TutorialMonsters.xml" t="Include" />
+              <e p="TutorialObjects.xml" t="Include" />
+              <e p="TutorialScript.xml" t="Include" />
+              <e p="UndeadLair.xml" t="Include" />
+              <e p="WillemTesting.xml" t="Include" />
+              <e p="xmasNexusGround.xml" t="Include" />
+              <e p="xmasNexusObjects.xml" t="Include" />
+            </e>
+          </e>
           <e p="Networking" t="Include">
             <e p="Newtonsoft.Json.xml" t="Include" />
             <e p="NLog.xml" t="Include" />
@@ -16,13 +198,25 @@
         <e p="Scripts" t="Include">
           <e p="Assets" t="Include">
             <e p="ObjectLibrary.cs" t="Include" />
+            <e p="SoundEffectLibrary.cs" t="Include" />
+          </e>
+          <e p="Constants" t="Include">
+            <e p="ActivateEffects.cs" t="Include" />
+            <e p="ConditionEffects.cs" t="Include" />
+            <e p="EffectType.cs" t="Include" />
+            <e p="Pets" t="Include">
+              <e p="Ability.cs" t="Include" />
+              <e p="Family.cs" t="Include" />
+              <e p="Rarity.cs" t="Include" />
+            </e>
+            <e p="SpawnCount.cs" t="Include" />
           </e>
           <e p="Networking" t="Include">
             <e p="Connection" t="Include">
               <e p="GameServerConnectionConcrete.cs" t="Include" />
               <e p="GameSprite.cs" t="Include" />
             </e>
-            <e p="Map" t="Include">
+            <e p="GameMap" t="Include">
               <e p="AbstractMap.cs" t="Include" />
               <e p="Map.cs" t="Include" />
             </e>
@@ -32,7 +226,20 @@
               <e p="ObjectProperties.cs" t="Include" />
               <e p="Player.cs" t="Include" />
               <e p="Projectile.cs" t="Include" />
+              <e p="Properties" t="Include">
+                <e p="ActivateEffect.cs" t="Include" />
+                <e p="GroundTileProperties.cs" t="Include" />
+                <e p="ItemProperties.cs" t="Include" />
+                <e p="ObjectProperties.cs" t="Include" />
+                <e p="PetProperties.cs" t="Include" />
+                <e p="PortalProperties.cs" t="Include" />
+                <e p="ProjectileProperties.cs" t="Include" />
+              </e>
             </e>
+          </e>
+          <e p="Utils" t="Include">
+            <e p="Math.cs" t="Include" />
+            <e p="XMLParser.cs" t="Include" />
           </e>
         </e>
       </e>

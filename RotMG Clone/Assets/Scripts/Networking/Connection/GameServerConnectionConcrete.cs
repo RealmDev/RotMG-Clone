@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets;
+using Networking.GameMap;
 using Networking.Objects;
 using RotMG_Net_Lib.Constants;
 using RotMG_Net_Lib.Models;
@@ -18,17 +19,18 @@ namespace Networking.Connection
 
         private Player _player;
 
-        private Map.Map _map;
+        private Map _map;
         private int _playerId;
         private int _charId;
 
-        private GameSprite Gs;
+        private GameSprite _gs;
 
         public bool CreateCharacter { get; set; }
 
         public void Start()
         {
             _client = new NetClient();
+            _gs = new GameSprite();
         }
 
         public void Connect()
@@ -175,7 +177,7 @@ namespace Networking.Connection
 
             foreach (GroundTileData groundTile in updatePacket.Tiles)
             {
-                Map.Map.SetGroundTile(groundTile.X, groundTile.Y, groundTile.Type);
+                Map.SetGroundTile(groundTile.X, groundTile.Y, groundTile.Type);
             }
 
             foreach (ObjectData newObject in updatePacket.NewObjects)
@@ -185,7 +187,7 @@ namespace Networking.Connection
 
             foreach (int drop in updatePacket.Drops)
             {
-                Map.Map.RemoveObject(drop);
+                Map.RemoveObject(drop);
             }
         }
 
@@ -228,7 +230,7 @@ namespace Networking.Connection
 
         private void OnMapInfo(IncomingPacket p)
         {
-            Gs.ApplyMapInfo((MapInfoPacket) p);
+            _gs.ApplyMapInfo((MapInfoPacket) p);
 
             if (CreateCharacter)
             {
@@ -268,10 +270,7 @@ namespace Networking.Connection
         }
 
 
-
-
         #region Projectiles
-
 
 
         public void PlayerShoot(int time, Projectile proj)
@@ -279,14 +278,9 @@ namespace Networking.Connection
             
         }
         
-        
 
         #endregion
         
-        
-        
-
-
         private void ProcessObjectStatus(ObjectStatusData statusData, int newTickTickTime, int newTickTickId)
         {
         }

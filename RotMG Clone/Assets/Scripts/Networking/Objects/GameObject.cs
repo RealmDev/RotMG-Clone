@@ -1,4 +1,6 @@
-﻿namespace Networking.Objects
+﻿using System.Xml.Linq;
+
+namespace Networking.Objects
 {
     public class GameObject : BasicObject
     {
@@ -6,5 +8,12 @@
         {
             throw new System.NotImplementedException();
         }
+
+        public GameObject(XElement xml)
+        {
+
+           
+        }
+        
     }
 }

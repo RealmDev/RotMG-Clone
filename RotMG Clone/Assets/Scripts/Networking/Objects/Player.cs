@@ -1,4 +1,5 @@
-﻿using RotMG_Net_Lib.Models;
+﻿using System.Xml.Linq;
+using RotMG_Net_Lib.Models;
 
 namespace Networking.Objects
 {
@@ -6,5 +7,8 @@ namespace Networking.Objects
     {
         public WorldPosData Position { get; set; }
 
+        public Player(XElement xml) : base(xml)
+        {
+        }
     }
 }

@@ -1,0 +1,39 @@
+﻿namespace Constants
+{
+    public enum ActivateEffects
+    {
+        Shoot,
+        StatBoostSelf,
+        StatBoostAura,
+        BulletNova,
+        ConditionEffectAura,
+        ConditionEffectSelf,
+        Heal,
+        HealNova,
+        Magic,
+        MagicNova,
+        Teleport,
+        VampireBlast,
+        Trap,
+        StasisBlast,
+        Decoy,
+        Lightning,
+        PoisonGrenade,
+        RemoveNegativeConditions,
+        RemoveNegativeConditionsSelf,
+        IncrementStat,
+        Pet,
+        PermaPet,
+        Create,
+        UnlockPortal,
+        DazeBlast,
+        ClearConditionEffectAura,
+        ClearConditionEffectSelf,
+        Dye,
+        CreatePet,
+        ShurikenAbility,
+        UnlockSkin,
+        MysteryPortal,
+        GenericActivate
+    }
+}
