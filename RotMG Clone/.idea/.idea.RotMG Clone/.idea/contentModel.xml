@@ -14,8 +14,25 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Assets" t="Include">
+            <e p="ObjectLibrary.cs" t="Include" />
+          </e>
           <e p="Networking" t="Include">
-            <e p="GameServerConnectionConcrete.cs" t="Include" />
+            <e p="Connection" t="Include">
+              <e p="GameServerConnectionConcrete.cs" t="Include" />
+              <e p="GameSprite.cs" t="Include" />
+            </e>
+            <e p="Map" t="Include">
+              <e p="AbstractMap.cs" t="Include" />
+              <e p="Map.cs" t="Include" />
+            </e>
+            <e p="Objects" t="Include">
+              <e p="BasicObject.cs" t="Include" />
+              <e p="GameObject.cs" t="Include" />
+              <e p="ObjectProperties.cs" t="Include" />
+              <e p="Player.cs" t="Include" />
+              <e p="Projectile.cs" t="Include" />
+            </e>
           </e>
         </e>
       </e>

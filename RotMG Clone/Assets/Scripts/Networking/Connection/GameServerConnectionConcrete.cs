@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using NLog.Fluent;
-using RotMG_Net_Lib;
+using Assets;
+using Networking.Objects;
 using RotMG_Net_Lib.Constants;
 using RotMG_Net_Lib.Models;
 using RotMG_Net_Lib.Networking;
@@ -8,12 +8,23 @@ using RotMG_Net_Lib.Networking.Packets;
 using RotMG_Net_Lib.Networking.Packets.Incoming;
 using RotMG_Net_Lib.Networking.Packets.Outgoing;
 using UnityEngine;
+using GameObject = Networking.Objects.GameObject;
 
-namespace Networking
+namespace Networking.Connection
 {
     public class GameServerConnectionConcrete : MonoBehaviour
     {
         private NetClient _client;
+
+        private Player _player;
+
+        private Map.Map _map;
+        private int _playerId;
+        private int _charId;
+
+        private GameSprite Gs;
+
+        public bool CreateCharacter { get; set; }
 
         public void Start()
         {
@@ -78,102 +89,208 @@ namespace Networking
             // _client.Hook(PacketType.REALM_HERO_LEFT_MSG, OnRealmHeroesResponse);
         }
 
+
+        #region Packet Handling
+
         private void OnAoe(IncomingPacket p)
         {
             AoePacket aoe = new AoePacket();
-            _client.SendPacket(new AoeAckPacket {Position = aoe.Pos, Time = _client.GetTimer()});
+
+            _client.SendPacket(new AoeAckPacket
+            {
+                Position = aoe.Pos,
+                Time = _client.GetTimer()
+            });
         }
 
         private void OnGoto(IncomingPacket p)
         {
-            _client.SendPacket(new GotoAckPacket() {Time = GetTimer()});
+            _client.SendPacket(new GotoAckPacket()
+            {
+                Time = _client.GetTimer()
+            });
         }
 
         private void OnPing(IncomingPacket packet)
         {
             PingPacket pingPacket = (PingPacket) packet;
-            _client.SendPacket(new PongPacket() {Serial = pingPacket.Serial, Time = GetTimer()});
+
+            _client.SendPacket(new PongPacket()
+            {
+                Serial = pingPacket.Serial, Time = _client.GetTimer()
+            });
         }
 
         private void OnFailure(IncomingPacket p)
         {
-            Log.Info("Failure: " + ((FailurePacket) p).ErrorDescription + " with bot " + Account.Email + ".");
-
             FailurePacket failure = (FailurePacket) p;
 
-            if (failure.ErrorDescription.Contains("Email Verification needed"))
-            {
-                _client.Disconnect(DisconnectReason.EmailVerificationNeeded.SetDetails(failure.ErrorDescription));
-            }
-            else if (failure.ErrorDescription.Contains("Protocol error"))
-            {
-                _client.Disconnect(DisconnectReason.ProtocolError.SetDetails(failure.ErrorDescription));
-            }
-            else if (failure.ErrorDescription.Contains("Account in use") || failure.ErrorDescription.Contains("Account is already in use"))
-            {
-                _client.Disconnect(DisconnectReason.AccountInUse.SetDetails(failure.ErrorDescription));
-            }
-            else
-            {
-                Log.Error("UNHANDLED FAILURE : " + failure.ErrorDescription);
-            }
+            Debug.Log("Failure: " + ((FailurePacket) p).ErrorDescription + ".");
+
+            /* Possible errors : 
+             * "Email Verification needed"
+             * "Protocol error"
+             * "Account in use"
+             * "Account is already in use"
+             * and more...
+             */
         }
 
         private void OnNewTick(IncomingPacket p)
         {
-            NewTickPacket newTickPacket = (NewTickPacket) p;
-            foreach (var objectStatusData in newTickPacket.Statuses)
-            {
-                if (objectStatusData.ObjectId == Player.ObjectId)
-                {
-                    Player.Position = objectStatusData.Pos;
-                }
-            }
+            NewTickPacket newTick = (NewTickPacket) p;
 
-            _client.SendPacket(new MovePacket() {TickId = newTickPacket.TickId, Time = GetTimer(), NewPosition = Player.Position, Records = new List<MoveRecord>()});
+            Move(newTick.TickId, _player);
+
+            foreach (var statusData in newTick.Statuses)
+            {
+                ProcessObjectStatus(statusData, newTick.TickTime, newTick.TickId);
+            }
         }
 
+        private void Move(int newTickTickId, Player player)
+        {
+            _client.SendPacket(new MovePacket()
+            {
+                TickId = newTickTickId,
+                Time = _client.GetTimer(),
+                NewPosition = _player.Position,
+                Records = new List<MoveRecord>()
+            });
+        }
+
+        /**
+         * This method handles the update packet :
+         *     Add ground tiles in the game world
+         *     Add objects
+         *     Remove objects
+         *
+         * These objects are then updated by the NewTick packet.
+         */
         private void OnUpdate(IncomingPacket p)
         {
-            SendPacket(new UpdateAckPacket());
+            _client.SendPacket(new UpdateAckPacket());
 
             UpdatePacket updatePacket = (UpdatePacket) p;
-            foreach (ObjectData updatePacketNewObject in updatePacket.NewObjects)
+
+            foreach (GroundTileData groundTile in updatePacket.Tiles)
             {
-                if (updatePacketNewObject.Status.ObjectId == Player.ObjectId)
-                {
-                    Player.Position = updatePacketNewObject.Status.Pos;
-                    UpdateMyPlayerGameObject(updatePacketNewObject.Status);
-                }
+                Map.Map.SetGroundTile(groundTile.X, groundTile.Y, groundTile.Type);
+            }
+
+            foreach (ObjectData newObject in updatePacket.NewObjects)
+            {
+                AddObject(newObject);
+            }
+
+            foreach (int drop in updatePacket.Drops)
+            {
+                Map.Map.RemoveObject(drop);
+            }
+        }
+
+        private void AddObject(ObjectData newObject)
+        {
+            GameObject o = ObjectLibrary.GetObjectFromType(newObject.ObjectType);
+
+            ObjectStatusData objectStatusData = newObject.Status;
+
+            o.SetObjectId(objectStatusData.ObjectId);
+
+            if (o is Player player)
+            {
+                HandleNewPlayer(player);
+            }
+
+            ProcessObjectStatus(objectStatusData, 0, -1);
+        }
+
+        private void HandleNewPlayer(Player player)
+        {
+            if (player.ObjectId == _playerId)
+            {
+                this._player = player;
+                // TODO set camera focus to player
             }
         }
 
         private void OnCreateSuccess(IncomingPacket packet)
         {
-            Log.Info(Account.Email + " Has successfully connected!");
+            Debug.Log("Has successfully connected!");
 
             CreateSuccessPacket createSuccessPacket = (CreateSuccessPacket) packet;
-            Player = new Player {ObjectId = createSuccessPacket.ObjectId};
+
+            _playerId = createSuccessPacket.ObjectId;
+            _charId = createSuccessPacket.CharId;
+            CreateCharacter = false;
         }
+
 
         private void OnMapInfo(IncomingPacket p)
         {
-            if (CreateNewCharacter)
+            Gs.ApplyMapInfo((MapInfoPacket) p);
+
+            if (CreateCharacter)
             {
-                Log.Debug("Creating new character...");
-
-                CreatePacket createPacket = new CreatePacket() {ClassType = Class.Wizard.Id, SkinType = 0};
-
-                SendPacket(createPacket);
+                Create();
             }
 
             else
             {
-                Log.Debug("Loading existing character...");
-
-                LoadPacket load = new LoadPacket() {CharId = CharacterId, IsFromArena = false};
-                SendPacket(load);
+                Load();
             }
         }
+
+        #endregion
+
+
+        private void Create()
+        {
+            Debug.Log("Creating new character...");
+            CreatePacket createPacket = new CreatePacket()
+            {
+                ClassType = Class.Wizard.Id, SkinType = 0
+            };
+
+            _client.SendPacket(createPacket);
+        }
+
+
+        private void Load()
+        {
+            Debug.Log("Loading existing character...");
+
+            LoadPacket load = new LoadPacket()
+            {
+                CharId = _charId, IsFromArena = false
+            };
+            _client.SendPacket(load);
+        }
+
+
+
+
+        #region Projectiles
+
+
+
+        public void PlayerShoot(int time, Projectile proj)
+        {
+            
+        }
+        
+        
+
+        #endregion
+        
+        
+        
+
+
+        private void ProcessObjectStatus(ObjectStatusData statusData, int newTickTickTime, int newTickTickId)
+        {
+        }
     }
+
+
 }
