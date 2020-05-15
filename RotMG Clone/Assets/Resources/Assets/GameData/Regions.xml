@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
 <Regions>
+
+<!-- Regions -->
+
+
    <Region type="0x01" id="Spawn">
       <Color>0x00FF00</Color>
    </Region>
@@ -175,4 +177,5 @@
    <Region type="0x3a" id="Quest Monster Region 2">
       <Color>0x0083FF</Color>
    </Region>
+
 </Regions>
