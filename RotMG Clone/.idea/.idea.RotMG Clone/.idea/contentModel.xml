@@ -9,56 +9,15 @@
       <e p="Assets" t="Include">
         <e p="Resources" t="Include">
           <e p="Assets" t="Include">
-            <e p="3DObjects" t="Include">
-              <e p="bigcube.obj" t="Include" />
-              <e p="brokenPillar.obj" t="Include" />
-              <e p="candyColBroken.obj" t="Include" />
-              <e p="candyColWhole.obj" t="Include" />
-              <e p="candyDoughnut1.obj" t="Include" />
-              <e p="candyDoughnut2.obj" t="Include" />
-              <e p="candyDoughnut3.obj" t="Include" />
-              <e p="candyDoughnut4.obj" t="Include" />
-              <e p="cloningVat.obj" t="Include" />
-              <e p="columnOneAndHalf.obj" t="Include" />
-              <e p="crate.obj" t="Include" />
-              <e p="cube.obj" t="Include" />
-              <e p="dodecahedron.obj" t="Include" />
-              <e p="gasEmitter.obj" t="Include" />
-              <e p="icosahedron.obj" t="Include" />
-              <e p="jacko.obj" t="Include" />
-              <e p="labTank.obj" t="Include" />
-              <e p="largeMonument1.obj" t="Include" />
-              <e p="largeMonument2.obj" t="Include" />
-              <e p="largeMonument3.obj" t="Include" />
-              <e p="monsterTank1.obj" t="Include" />
-              <e p="monsterTank2.obj" t="Include" />
-              <e p="monsterTank3.obj" t="Include" />
-              <e p="monsterTank4.obj" t="Include" />
-              <e p="newGate.obj" t="Include" />
-              <e p="newGateEnd1.obj" t="Include" />
-              <e p="newGateEnd2.obj" t="Include" />
-              <e p="newGateEntry.obj" t="Include" />
-              <e p="newGateEntry2.obj" t="Include" />
-              <e p="newMonument1.obj" t="Include" />
-              <e p="newMonument2.obj" t="Include" />
-              <e p="newMonument3.obj" t="Include" />
-              <e p="obelisk.obj" t="Include" />
-              <e p="octahedron.obj" t="Include" />
-              <e p="petUpgrader.obj" t="Include" />
-              <e p="pillar.obj" t="Include" />
-              <e p="pyramid.obj" t="Include" />
-              <e p="sign.obj" t="Include" />
-              <e p="squatty3Side.obj" t="Include" />
-              <e p="table.obj" t="Include" />
-              <e p="tableEdge.obj" t="Include" />
-              <e p="tesla.obj" t="Include" />
-              <e p="tetrahedron.obj" t="Include" />
-              <e p="threeSideCube.obj" t="Include" />
-              <e p="tower.obj" t="Include" />
-              <e p="twoHighWall.obj" t="Include" />
-              <e p="web.obj" t="Include" />
+            <e p="GameData" t="Include">
+              <e p="Dungeons.xml" t="Include" />
+              <e p="EquipmentSets.xml" t="Include" />
+              <e p="GroundTypes.xml" t="Include" />
+              <e p="Objects.xml" t="Include" />
+              <e p="particles.xml" t="Include" />
+              <e p="Regions.xml" t="Include" />
+              <e p="Tutorial.xml" t="Include" />
             </e>
-            <e p="GameData" t="Include" />
           </e>
           <e p="Networking" t="Include">
             <e p="Newtonsoft.Json.xml" t="Include" />
